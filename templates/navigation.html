@@ -1,0 +1,39 @@
+{%load static%}
+
+<nav class="navbar navbar-expand-lg bg-light rounded sticky-top" aria-label="Thirteenth navbar example">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11"
+            aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+            <a class="navbar-brand col-lg-3 me-0" href="#">
+                <img src="{%static 'images/logo.svg'%}" width="60" class="me-3">
+                <span style="font-family: 'Labrada', serif; font-size: 1.6rem;">Ballot Box</span>
+            </a>
+            <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+                <li class="nav-item">
+                    <a class="nav-link link-dark text-uppercase navigation" href="{%url 'home'%}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-dark text-uppercase navigation" href="#">Results</a>
+                </li>
+            </ul>
+            <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+                <a href="#" title="Link to Github Repo">
+                    <img src="{%static 'images/github.svg'%}" width="30" class="me-3 text-decoration-none nav-icon">
+                </a>
+                <a href="#" title="Link to my linked in profile">
+                    <img src="{%static 'images/linkedin.svg'%}" width="30" class="me-3 text-decoration-none nav-icon">
+                </a>
+                <a href="#" title="link to project blog post">
+                    <img src="{%static 'images/medium.svg'%}" width="30" class="me-3 text-decoration-none nav-icon">
+                </a>
+                <a href="#" title="link to project demo on youtube">
+                    <img src="{%static 'images/youtube.svg'%}" width="30" class="me-3 text-decoration-none nav-icon">
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
