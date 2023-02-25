@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+    <div class="container d-flex justify-content-center" style="width: 100vw;">
+        <div class="row">
+            <div class="col">
+                <h1>Register</h1>
+                <form method="POST">
+                    {%csrf_token%}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{%endblock%}
