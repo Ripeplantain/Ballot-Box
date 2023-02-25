@@ -1,0 +1,18 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing:1px;
+}
+
+h1 {
+    font-family: 'Labrada', serif;
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+}
+
+
+label {
+    font-size: 15px;
+}
