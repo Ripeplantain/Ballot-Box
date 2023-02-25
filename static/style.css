@@ -12,6 +12,10 @@ h2 {
     font-size: 4rem;
 }
 
+.navigation:hover {
+    border-bottom: 1px solid #000;
+}
+
 
 label {
     font-size: 15px;
