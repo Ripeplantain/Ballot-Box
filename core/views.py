@@ -28,15 +28,20 @@ def election_view(request, id):
     Election view
     """
 
-    candidates = Candidate.objects.filter(election=id)
-    user_groups = request.user.groups.all()
-    group_names = [group.name for group in user_groups]
+    voted_before = Vote.objects.filter(election=id, voter=request.user).exists()
+    if voted_before:
+        messages.error(request, 'You have already voted in this election')
+        return redirect('home')
+    else:
+        candidates = Candidate.objects.filter(election=id)
+        user_groups = request.user.groups.all()
+        group_names = [group.name for group in user_groups]
 
-    context = {
-                'candidates': candidates,
-                'group_names': group_names
-                }
-    return render(request, 'core/candidate.html',context)
+        context = {
+                    'candidates': candidates,
+                    'group_names': group_names
+                    }
+        return render(request, 'core/candidate.html',context)
 
 @login_required(login_url='login')
 def vote_view(request, id):
