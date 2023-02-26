@@ -19,6 +19,17 @@
                 <li class="nav-item">
                     <a class="nav-link link-dark text-uppercase navigation" href="#">Results</a>
                 </li>
+                {% if request.user.is_authenticated and 'agent' in group_names%}
+                <li class="nav-item">
+                    <a class="nav-link link-dark text-uppercase navigation" href="{%url 'dashboard'%}">Dashboard</a>
+                </li>
+                {% endif %}
+                {%if request.user.is_authenticated%}
+                <li class="nav-item">
+                    <a href="{%url 'logout'%}" class="btn btn-dark text-uppercase">Logout</a>
+                </li>
+                {%endif%}
+               
             </ul>
             <div class="d-lg-flex col-lg-3 justify-content-lg-end">
                 <a href="#" title="Link to Github Repo">
