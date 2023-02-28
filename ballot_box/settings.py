@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'account',
+    'mathfilters',
 ]
+
+ASGI_APPLICATION = 'ballot_box.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
