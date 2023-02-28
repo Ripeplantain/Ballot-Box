@@ -27,6 +27,7 @@ class Candidate(models.Model):
     name = models.CharField(max_length=50)
     party = models.ForeignKey(Party, on_delete=models.CASCADE)
     election = models.ForeignKey(Election, on_delete=models.CASCADE)
+    votes = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

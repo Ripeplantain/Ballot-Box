@@ -6,4 +6,6 @@ urlpatterns = [
     path('election/<int:id>',election_view, name='election'),
     path('vote/<int:id>',vote_view, name='vote'),
     path('dashboard/',dashboard_view, name='dashboard'),
+    path('results/',results_view, name='results'),
+    path('box/<int:id>/',box_view, name='box'),
 ]
