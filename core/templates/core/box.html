@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{%load mathfilters%}
+
+{%load static%}
+
+{%block content%}
+
+<div class="container">
+    <div class="row my-5">
+        <div class="col">
+            <h1 class="text-center">Check if your candidate is winning</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center text-danger">Always choose peace</h3>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        {%for candidate in candidates%}
+        <div class="col-md-9 my-4 d-flex justify-content-between text-center border border-dark rounded p-5">
+            <div>
+                <img src="{%static 'images/vote.svg'%}" width="100">
+            </div>
+            <div class="">
+                <h3>{{candidate.name}}</h3>
+                <p>{{candidate.party}}</p>
+            </div>
+            <div>
+                <p style="font-size: 3rem;">
+                   {{candidate.votes}}
+                </p>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
+{%endblock%}
