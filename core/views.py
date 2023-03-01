@@ -59,20 +59,6 @@ def vote_view(request, id):
 
         return redirect('home')
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['agent'])
-def dashboard_view(request):
-    """
-    Dashboard view
-    """
-
-    user_groups = request.user.groups.all()
-    group_names = [group.name for group in user_groups]
-
-    context = {
-                'group_names': group_names
-    }
-    return render(request, 'core/dashboard.html',context)
 
 
 @login_required(login_url='login')

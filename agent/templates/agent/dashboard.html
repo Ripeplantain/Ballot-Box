@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+<div class="container d-flex flex-column my-5">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="mb-3 text-uppercase" style="letter-spacing: 2px;">Dashboard</h1>
+            <p class="mb-5">Here you see app activity</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-around flex-wrap">
+        <div style="background-color: #079992; padding: 40px 150px; letter-spacing: 2px;" class="text-center text-uppercase mb-5">
+            <a href="#" class="text-decoration-none text-light">
+                <p style="font-size: 2rem;">Votes</p>
+                <p style="font-size: 2.5rem;">{{votes}}</p>
+            </a>
+        </div>
+        <div style="background-color: #e58e26; padding: 40px 150px; letter-spacing: 2px;" class="text-center text-uppercase mb-5">
+            <a href="#" class="text-decoration-none text-light">
+                <p style="font-size: 2rem;">Users</p>
+                <p style="font-size: 2.5rem;">{{users}}</p>
+            </a>
+        </div>
+        <div style="background-color: #2f3640; padding: 40px 86px; letter-spacing: 2px;" class="text-center text-uppercase mb-5">
+            <a href="#" class="text-decoration-none text-light">
+                <p style="font-size: 2rem;">Registered Users</p>
+                <p style="font-size: 2.5rem;">{{registered_users}}</p>
+            </a>
+            
+        </div>
+        <div style="background-color: #0a3d62; padding: 40px 120px; letter-spacing: 2px;" class="text-center text-uppercase mb-5">
+            <a href="#" class="text-decoration-none text-light">
+                <p style="font-size: 2rem;">Voted Users</p>
+                <p style="font-size: 2.5rem;">{{voted_users}}</p>
+            </a>
+        </div>
+        <div style="background-color: #b33939; padding: 40px 60px; letter-spacing: 2px;" class="text-center text-uppercase mb-5">
+            <a href="#" class="text-decoration-none text-light">
+                <p style="font-size: 2rem;">Unregistered Users</p>
+                <p style="font-size: 2.5rem;">{{unregister_users}}</p>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <a href="" class="btn btn-lg btn-primary">Send mail to unregistered users</a>
+    </div>
+</div>
+{%endblock%}

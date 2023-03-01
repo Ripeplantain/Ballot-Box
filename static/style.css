@@ -12,6 +12,10 @@ h2 {
     font-size: 4rem;
 }
 
+h3 {
+    font-size: 3rem;
+}
+
 .navigation:hover {
     border-bottom: 1px solid #000;
 }
