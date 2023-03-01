@@ -3,6 +3,7 @@ from .models import Candidate, Election, Vote
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from account.decorators import allowed_users
+from django.core.cache import cache
 
 # Create your views here.
 
@@ -12,7 +13,12 @@ def home_view(request):
     Home view
     """
 
-    elections = Election.objects.all()
+    if cache.get('elections'):
+        elections = cache.get('elections')
+    else:
+        elections = Election.objects.all()
+        cache.set('elections',elections,60)
+
     user_groups = request.user.groups.all()
     group_names = [group.name for group in user_groups]
 
@@ -33,7 +39,11 @@ def election_view(request, id):
         messages.error(request, 'You have already voted in this election')
         return redirect('home')
     else:
-        candidates = Candidate.objects.filter(election=id)
+        if cache.get('candidates'):
+            candidates = cache.get('candidates')
+        else:
+            candidates = Candidate.objects.filter(election=id)
+            cache.set('candidates',candidates,60)
         user_groups = request.user.groups.all()
         group_names = [group.name for group in user_groups]
 
@@ -67,9 +77,14 @@ def results_view(request):
     Display results
     """
 
+    if cache.get('elections'):
+        elections = cache.get('elections')
+    else:
+        elections = Election.objects.all()
+        cache.set('elections',elections,60)
+
     user_groups = request.user.groups.all()
     group_names = [group.name for group in user_groups]
-    elections = Election.objects.all()
 
     context = {
                 'group_names': group_names,
@@ -85,7 +100,12 @@ def box_view(request,id):
     View election result here
     """
 
-    candidates = Candidate.objects.filter(election=id)
+    if cache.get(id):
+        candidates = cache.get(id)
+    else:
+        candidates = Candidate.objects.filter(election=id)
+        cache.set(id,candidates,60)
+
     user_groups = request.user.groups.all()
     group_names = [group.name for group in user_groups]
     votes = Vote.objects.filter(election=id)
