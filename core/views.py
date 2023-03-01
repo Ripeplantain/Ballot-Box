@@ -48,13 +48,16 @@ def vote_view(request, id):
     """
     Vote view
     """
+    if request.user.profile.registered == False:
+        messages.error(request, 'You must verify your account before you can vote')
+        return redirect('profile')
+    else:
+        candidate = Candidate.objects.get(id=id)
+        vote = Vote.objects.create(election=candidate.election, candidate=candidate, voter=request.user)
+        vote.save()
+        messages.success(request, 'Vote casted successfully')
 
-    candidate = Candidate.objects.get(id=id)
-    vote = Vote.objects.create(election=candidate.election, candidate=candidate, voter=request.user)
-    vote.save()
-    messages.success(request, 'Vote casted successfully')
-
-    return redirect('home')
+        return redirect('home')
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['agent'])
