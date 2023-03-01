@@ -30,6 +30,7 @@ class Candidate(models.Model):
     party = models.ForeignKey(Party, on_delete=models.CASCADE)
     election = models.ForeignKey(Election, on_delete=models.CASCADE)
     votes = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='candidate_pics/', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

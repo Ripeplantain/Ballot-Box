@@ -19,7 +19,11 @@
                 {%for candidate in candidates%}
                 <div class="col-md-9 my-4 d-flex justify-content-between text-center border border-dark rounded p-5">
                     <div>
-                        <img src="{%static 'images/vote.svg'%}" width="100">
+                        {%if candidate.image%}
+                            <img src="{{candidate.image.url}}" width="150" height="150" class="rounded-circle">
+                        {%else%}
+                            <img src="{%static 'images/vote.svg'%}" width="150" height="150" class="rounded-circle">
+                        {%endif%}
                     </div>
                     <div class="">
                         <h3>{{candidate.name}}</h3>
