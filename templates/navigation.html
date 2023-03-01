@@ -17,6 +17,9 @@
                     <a class="nav-link link-dark text-uppercase navigation" href="{%url 'home'%}">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link link-dark text-uppercase navigation" href="{%url 'profile'%}">Profile</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link link-dark text-uppercase navigation" href="{%url 'results'%}">Results</a>
                 </li>
                 {% if request.user.is_authenticated and 'agent' in group_names%}

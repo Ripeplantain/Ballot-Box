@@ -1,7 +1,5 @@
 {%extends 'base.html'%}
 
-{%load mathfilters%}
-
 {%load static%}
 
 {%block content%}
@@ -28,7 +26,7 @@
                 <p>{{candidate.party}}</p>
             </div>
             <div>
-                <p style="font-size: 3rem;">
+                <p style="font-size: 3rem;" id="display">
                    {{candidate.votes}}
                 </p>
             </div>

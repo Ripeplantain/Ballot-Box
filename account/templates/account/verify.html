@@ -1,0 +1,61 @@
+{%extends 'base.html'%}
+
+{%load static%}
+
+{%block content%}
+<div class="container">
+    <div class="row text-center d-flex align-items-center" style="min-height: 70vh;">
+        <div class="col">
+            <h1 class="text-uppercase mb-5">Verify Account</h1>
+
+            <form method="POST" enctype="multipart/form-data">
+                {%csrf_token%}
+
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success message" role="alert">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
+
+                {% if form.errors %}
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <div class="mb-3">
+                    <label class="form-label">Profile Image</label>
+                    {{form.profile_pic}}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Location</label>
+                    {{form.location}}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Age</label>
+                    {{form.age}}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Phonenumber</label>
+                    {{form.phonenumber}}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Otp</label>
+                    {{form.otp}}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

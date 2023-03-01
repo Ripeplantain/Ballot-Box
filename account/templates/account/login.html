@@ -10,12 +10,6 @@
         <div class="col" style="background-color:#c8d6e5; padding:10px 40px;">
             <h1 class="text-uppercase">Sign In</h1>
 
-            {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-success message" role="alert">{{ message }}</div>
-            {% endfor %}
-            {% endif %}
-
             
             <form method="POST">
                 {%csrf_token%}

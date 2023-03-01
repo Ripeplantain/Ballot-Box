@@ -3,7 +3,6 @@ from .models import Candidate, Election, Vote
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from account.decorators import allowed_users
-from django.http import JsonResponse
 
 # Create your views here.
 

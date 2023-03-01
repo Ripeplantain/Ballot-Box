@@ -1,10 +1,16 @@
 from django.shortcuts import render,redirect
-from .forms import CreateUserForm
+from .forms import CreateUserForm, ProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.http import JsonResponse
 from .decorators import authenticated_user
 from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
+
+from django.http import JsonResponse, HttpResponse
+
+from core.models import Profile
+from .email import send_otp_via_email
+
 
 # Create your views here.
 
@@ -56,3 +62,49 @@ def logout_view(request):
     """
     logout(request)
     return redirect('login')
+
+
+@login_required(login_url='login')
+def profile_view(request):
+    """
+    This view will handle the profile of a user
+    """
+
+    user_groups = request.user.groups.all()
+    group_names = [group.name for group in user_groups]
+
+    profile = Profile.objects.get(user=request.user.id)
+    context = {
+                'profile': profile,
+                'group_names': group_names
+            }
+    return render(request, 'account/profile.html',context)
+
+
+@login_required(login_url='login')
+def verify_view(request):
+    """
+    This view will handle the verification of a user
+    """
+
+    if request.user.profile.registered:
+        messages.error(request, 'You are already verified')
+        return redirect('home')
+    else:
+        form = ProfileForm()
+        send_otp_via_email(request.user.email)
+        messages.success(request, 'OTP has been sent to your email')
+
+        if request.method == 'POST':
+            form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+            if form.is_valid():
+                if form.cleaned_data.get('otp') == request.user.profile.otp:
+                    data = form.save(commit=False)
+                    data.registered = True
+                    data.save()
+                    return redirect('home')
+
+        context = {
+            'form': form
+        }
+        return render(request, 'account/verify.html',context)
