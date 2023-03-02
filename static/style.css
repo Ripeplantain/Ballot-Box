@@ -33,8 +33,9 @@ footer p {
 .wallpaper {
     position: relative;
     color: #fff;
-    height:80vh;
+    min-height:80vh;
 }
+
 
 .wallpaper::before {
     content: "";
