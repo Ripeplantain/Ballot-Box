@@ -7,6 +7,12 @@ from django.core.cache import cache
 
 # Create your views here.
 
+def landing_page(request):
+    """
+    Landing page view
+    """
+    return render(request, 'core/landing.html')
+
 @login_required(login_url='login')
 def home_view(request):
     """

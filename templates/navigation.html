@@ -13,6 +13,7 @@
                 <span style="font-family: 'Labrada', serif; font-size: 1.6rem;">Ballot Box</span>
             </a>
             <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+                {%if request.user.is_authenticated%}
                 <li class="nav-item">
                     <a class="nav-link link-dark text-uppercase navigation" href="{%url 'home'%}">Home</a>
                 </li>
@@ -27,7 +28,6 @@
                     <a class="nav-link link-dark text-uppercase navigation" href="{%url 'dashboard'%}">Dashboard</a>
                 </li>
                 {% endif %}
-                {%if request.user.is_authenticated%}
                 <li class="nav-item">
                     <a href="{%url 'logout'%}" class="btn btn-dark text-uppercase">Logout</a>
                 </li>

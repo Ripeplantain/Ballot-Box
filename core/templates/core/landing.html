@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{%load static%}
+
+{%block content%}
+<div class="container-fluid">
+    <div class="row wallpaper">
+        <div class="d-flex justify-content-center flex-column align-items-start" style="padding:0 10rem ;">
+            <h1 style="font-size: 2rem;">No need for long queues</h1>
+            <span style="font-weight: 600; font-size: 4rem;">We are the solution</span>
+            <p style="max-width: 500px;">Revolutionize democracy with our secure, efficient, and customizable online voting system for
+                tamper-proof results and tailored options.</p>
+            <a href="{%url 'home'%}" class="btn btn-lg btn-outline-light text-uppercase py-3 mt-3">Test Project</a>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row text-center my-5">
+        <div class="col">
+            <img src="{%static 'images/security.png'%}" alt="" width="150">
+            <p style="font-weight: 500; font-size: 1.5rem;">Security</p>
+            <p></p>
+        </div>
+        <div class="col">
+            hii
+        </div>
+        <div class="col">
+            hii
+        </div>
+    </div>
+</div>
+{%endblock%}
