@@ -25,6 +25,10 @@ label {
     font-size: 15px;
 }
 
+footer p {
+    font-weight:500;
+}
+
 
 .wallpaper {
     position: relative;
